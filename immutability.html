@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>immutability</title>
+    </head>
+    <body>
+        <script>
+          const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+
+          const namesWithMark = names.map((name) =>`${name}!`);
+
+          console.log({
+            names,
+            namesWithMark
+          });
+
+          const user = {
+            firstname: 'Harry',
+            lastName: 'Protter', //ups typo
+          }
+
+          const createWithNewLastname = (newLastname,user) => {
+            return {...user,lastName:newLastname}
+          }
+
+          const newUser = createWithNewLastname('Potter',user);
+
+          console.log(newUser);
+
+          //REKURSIF
+          /*
+          const countDown = start => {
+            do{
+                console.log(start);
+                start -=1;
+            }
+            while(start >0);
+          };
+
+          countDown(10); */
+
+          //bentuk rekursif
+
+          const countDown = start => {
+            console.log(start);
+            if(start >0) countDown(start -1);
+          };
+
+          countDown(10);
+
+          //High Order Function
+          const hello = () =>{
+            console.log('Hello!')
+          };
+
+          const say = (someFunction) => {
+            someFunction();
+          }
+
+          const sayHello = () =>{
+            return() => {
+                console.log('Hello!');
+            }
+          }
+
+          hello();
+          say(hello);
+          sayHello()();
+          //const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+          const arrayMap = (arr,action) => {
+            const looptrough = (arr, action ,newArray = [],index = 0) => {
+              const item = arr[index];
+              if(!item) return newArray;
+              return looptrough(arr,action, [...newArray,action(arr[index])],index + 1);
+            }
+            return looptrough(arr,action);
+          }
+          const newNames = arrayMap(names, (name) => `${name}!`);
+
+          console.log({
+            names,
+            newNames
+          });
+        </script>
+    </body>
+</html>

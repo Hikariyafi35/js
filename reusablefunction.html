@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>reusable Function</title>
+    </head>
+    <body>
+        <script>
+            const newArray = ['Harry', 'Ron', 'Jeff', 'Thomas'].map((name)=> { return `${name}!`});
+
+            console.log(newArray);
+        
+            //array filter
+            const truthArray = [1, '', 'Hallo', 0, null, 'Harry', 14].filter((item) =>Boolean(item));
+
+            console.log(truthArray);
+            //[1,14]
+
+            const students =[
+            {
+                name: 'Harry',
+                score: 60,
+              },
+              {
+                name: 'James',
+                score: 88,
+              },
+              {
+                name: 'Ron',
+                score: 90,
+              },
+              {
+                name: 'Bethy',
+                score: 75,
+              }
+            ];
+
+            const lolos = students.filter((student)=> student.score>70);
+            console.log(lolos);
+
+            //array reduce
+            const totalScore = students.reduce((acc,student) => acc + student.score,0);
+            console.log(totalScore);
+
+            //array some
+            const array = [1,2,3,4,5];
+            const even = array.some(element => element % 2 ===0);
+
+            console.log(even);
+
+            //array find
+
+            const findNames = students.find(student => student.name === 'James');
+            console.log(findNames);
+
+            //array sort
+            const months = ['March', 'Jan', 'Feb', 'Dec'];
+            months.sort();
+            console.log(months);
+            // output: [ 'Dec', 'Feb', 'Jan', 'March' ]
+
+            const array1 = [1, 30, 4, 1000, 101, 121];
+            array1.sort();
+            console.log(array1);
+            // output: [ 1, 1000, 101, 121, 30, 4 ]
+
+            const array2 = [1,30,4,1000];
+
+            const compareNumber = (a,b) => {
+                return a-b;
+            };
+            const sorting=array2.sort(compareNumber);
+            console.log(sorting);
+
+            //array every
+            const scores =[70,85,90];
+            const minimuscore = 65;
+
+            const exampass = scores.every(score => score >= minimuscore);
+            console.log(exampass);
+
+            //array for each
+            // cara imperatif
+            const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+            for(let i = 0; i< names.length; i++){
+                console.log(`Hello, ${names[i]}`);
+            }
+            //cara deklaratid
+            const namapgl = ['udin','sugeng','abdul','komat'];
+
+            namapgl.forEach((nama) =>{
+                console.log(`hello ${nama}!`);
+            });
+
+            for(let i=0; i<names.length;i++){
+                if(names[i]==='Jeff') continue;
+
+                console.log(`Hello ${name[i]}!`);
+            }
+
+            
+            
+        </script>
+    </body>
+</html>

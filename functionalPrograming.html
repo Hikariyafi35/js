@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>functional programing</title>
+    </head>
+    <body>
+        <script>
+            const names = ['Harry','Ron','Jeff','Thomas'];
+
+            const newNameWithExcMark = [];
+
+            for(let i = 0; i<names.length; i++){
+                newNameWithExcMark.push(`${names[i]}!`);
+            }
+
+            console.log(newNameWithExcMark);
+            /*gaya imperatif mana proses pengisian nilai
+             array baru (newNames) berdasarkan array lama (names)
+              dilakukan secara manual*/
+
+            const nama =  ['Hika','Udin','Sugeng','Agus'];
+
+            const newNameWithMark = nama.map((nama)=> `${nama}!`);
+
+            console.log(newNameWithMark);
+            /* */
+
+            //imPURE Function
+
+            let pi = 3.14;
+
+            const hitungLuasLingkaran = (jariJari) => {
+                return pi *(jariJari*jariJari);
+            }
+            console.log(hitungLuasLingkaran(4));
+
+            pi = 5;
+
+            console.log(hitungLuasLingkaran(4))
+
+            //Pure Function
+            const hitungLuas = (jari2) => {
+                return 3.14*(jari2*jari2);
+            }
+
+            console.log(hitungLuas(4));
+            console.log(hitungLuas(4));
+            console.log(hitungLuas(8));
+            console.log(hitungLuas(8));
+            
+
+            /*const createPersonWithAge = (age, person) => {
+                person.age = age;
+                return person;
+            };
+
+            const person = {
+                name: 'Bob'
+            };
+
+            const newPerson = createPersonWithAge(18,person);
+
+            console.log({
+                person,
+                newPerson
+            }); */
+
+            const createPersonWithAge = (age,person) => {
+                return {...person,age};
+            }
+
+            const person = {
+               name:'Bob'
+            };
+            
+            const newPerson = createPersonWithAge(18,person);
+            
+            console.log({
+                person,newPerson
+            });
+        </script>
+    </body>
+</html>

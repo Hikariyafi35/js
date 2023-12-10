@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>objek compositon</title>
+    </head>
+    <body>
+        <script>
+            class Developer {
+                constructor(name){
+                    this.name = name;
+                }
+                commitChanges(){
+                    console.log(`${this.name} is commiting changes...`)
+                }
+            }
+            /*class FrontEndDeveloper extends Developer {
+                buildUI() {
+                  console.log(`${this.name} is building UI...`);
+                }
+              }
+               
+              class BackEndDeveloper extends Developer {
+                buildAPI() {
+                  console.log(`${this.name} is building API...`);
+                }
+              }
+               
+              class DevOps extends Developer {
+                deployApp() {
+                  console.log(`${this.name} is deploying app...`);
+                }
+              } */
+              //ribet jika mambuat fullstack developer harus menulis ulang dari fe-devops
+              function canBuildUI(developer) {
+                return{
+                    buildUI: () => {
+                        console.log(`${developer.name} is building UI...`)
+                    }
+                }
+              }
+              function canBuildAPI(developer){
+                return{
+                    buildAPI: () => {
+                        console.log(`${developer.name} is building API...`)
+                    }
+                }
+              }
+              function canDeployApp(developer){
+                return{
+                    deployApp : () => {
+                        console.log(`${developer.name} deploying app...`)
+                    }
+                }
+              }
+              function createFrontEndDeveloper(name){
+                const developer = new Developer(name);
+                return Object.assign(developer,canBuildUI(developer));
+              }
+              function createBackEndDeveloper(name){
+                const developer = new Developer(name);
+                return Object.assign(developer, canBuildAPI(developer));
+              }
+              function createDevOps(name){
+                const developer = new Developer(name);
+                return Object.assign(developer,canDeployApp(developer));
+              }
+              function createFullStackDeveloper(name){
+                const developer = new Developer(name);
+                return Object.assign(developer,canBuildUI(developer),canBuildAPI(developer),canDeployApp(developer));
+              }
+
+              const FrontEndDeveloper = createFrontEndDeveloper('Udin');
+              FrontEndDeveloper.commitChanges();
+              FrontEndDeveloper.buildUI();
+              console.log(`is ${FrontEndDeveloper.name} developer? `,FrontEndDeveloper instanceof Developer);
+
+              const BackEndDeveloper = createBackEndDeveloper('Usman');
+              BackEndDeveloper.commitChanges();
+              BackEndDeveloper.buildAPI();
+              console.log(`is ${BackEndDeveloper.name} developer? `,BackEndDeveloper instanceof Developer);
+
+              const DevOps = createDevOps('Hika');
+              DevOps.commitChanges();
+              DevOps.deployApp();
+              console.log(`is ${DevOps.name} developer? `,DevOps instanceof Developer);
+
+              const FullStackDeveloper = createFullStackDeveloper('Sugeng');
+              FullStackDeveloper.commitChanges();
+              FullStackDeveloper.buildUI();
+              FullStackDeveloper.buildAPI();
+              FullStackDeveloper.deployApp();
+              console.log(`is ${FullStackDeveloper.name} developer? `,FullStackDeveloper instanceof Developer);
+        </script>
+    </body>
+</html>
